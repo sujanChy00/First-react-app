@@ -1,0 +1,1416 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap');
+
+@import 'Animate-media';
+@import 'Lists';
+
+$brand-color: #0F0F0F;
+$primary-color: #262626;
+$sec-color: #82B541;
+$w: #fff;
+$b: #000;
+$pt: 10px;
+$lh: 1.7rem;
+$h: calc(100vh - 1.75rem - 40px);
+$p: 200px;
+$h2-fs-md: 1.825rem;
+$pt-sm: 100px;
+
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+// ======================= GLOBAL =======================
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+p {
+    letter-spacing: 1.3px;
+    font-weight: 400;
+    margin: 0;
+}
+
+img,
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+    width: fit-content;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+button {
+    border: none;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+}
+
+.buy-btn {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+    z-index: 9999;
+
+    @include res480 {
+        display: none;
+    }
+
+    a {
+        // height: 50px;
+        padding: 15px;
+        border-radius: 50%;
+        background: $sec-color;
+        position: relative;
+        transition: all .5s linear;
+        // overflow: hidden;
+        display: flex;
+        align-items: center;
+
+        &:hover {
+
+            &::before,
+            &::after {
+                display: none;
+            }
+
+            .fa-leaf {
+                opacity: 0;
+            }
+
+            .fa-shopping-cart {
+                opacity: 1;
+                top: calc(50% - 1.8rem);
+            }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            // border: 10px solid $sec-color;
+            border-radius: 50%;
+            z-index: -1;
+            animation: ripple 1.5s infinite linear forwards;
+            background: $sec-color;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: $sec-color;
+            // border: 10px solid $sec-color;
+            // outline-offset: 1px;
+            border-radius: 50%;
+            z-index: -2;
+            animation: ripple1 1.5s infinite linear forwards;
+        }
+
+        i {
+            color: $w;
+            font-size: 1.5rem;
+            position: relative;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fa-shopping-cart {
+            position: absolute;
+            opacity: 0;
+            top: 50%;
+            left: calc(50% - 1.8rem);
+            transition: all .2s linear;
+        }
+    }
+}
+
+.btn {
+    color: $primary-color;
+    background: $w;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-weight: 600
+}
+
+.home-btn {
+    padding: 10px;
+    background: $sec-color;
+    color: $w;
+    border-radius: 5px;
+    margin: 50px;
+    letter-spacing: .7px;
+    font-weight: 600;
+
+    i {
+        padding-right: 10px;
+    }
+
+    &:hover {
+        color: $primary-color;
+    }
+
+    @include res772 {
+        padding: 8px;
+        letter-spacing: .5px;
+        font-size: 14px;
+    }
+}
+
+.top {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    background: $sec-color;
+    height: 40px;
+    width: 40px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
+    transition: all .3s ease;
+    text-align: center;
+    animation: moveUp .5s linear;
+
+    @include res992 {
+        display: none;
+    }
+
+    &:hover {
+        background: $brand-color;
+
+        .fa-angle-up {
+            transform: translateY(-100px);
+
+        }
+
+        .angle {
+            transform: translate(0);
+        }
+
+        i {
+            color: $w;
+        }
+    }
+
+    i {
+        color: $w;
+        font-size: 1.5rem;
+        transition: all .3s ease;
+    }
+
+    .angle {
+        position: absolute;
+        top: calc(20px - .75rem);
+        left: calc(25px - .75rem);
+        transform: translateY(50px);
+
+    }
+
+}
+
+::selection {
+    background: $sec-color;
+    color: $w;
+}
+
+// ======================= GLOBAL END =======================
+
+
+
+// ======================= HEADER =======================
+header {
+    background: $w;
+    padding: 20px 0px;
+
+    h3 {
+        background: linear-gradient(to right, $primary-color, rgba(255, 255, 255, 0.5));
+        color: transparent;
+        background-clip: text;
+
+        @include res480 {
+            font-size: 1.5rem;
+        }
+    }
+
+    .container-lg {
+        display: flex;
+        align-items: center;
+
+        nav {
+            margin-left: auto;
+            padding-right: 10px;
+            border-right: .5px solid $primary-color;
+
+            @include res992 {
+                display: none;
+            }
+
+            ul {
+                display: flex;
+                justify-content: end;
+
+                li {
+                    padding: 0px 10px;
+
+                    a {
+                        color: $primary-color;
+                        font-size: 14px;
+                        font-weight: 500;
+
+                        &:hover {
+                            text-decoration: underline;
+                            color: $sec-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        .header-icons {
+            text-align: right;
+
+            @include res992 {
+                margin-left: auto;
+            }
+
+            ul {
+                display: flex;
+                align-items: center;
+
+            }
+
+            i {
+                color: $w;
+                padding: 0px 5px;
+                color: $primary-color;
+                cursor: pointer;
+
+                @include res992 {
+                    padding: 0px 10px;
+                }
+
+                @include res480{
+                    padding: 0px 5px;
+                }
+            }
+
+            sup {
+                color: $w;
+                padding: 3px;
+                background: $sec-color;
+                border-radius: 2px;
+            }
+
+        }
+
+    }
+
+    .btn {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        padding-left: 10px;
+
+        i {
+            font-size: 1.5rem;
+
+            &:hover {
+                color: $sec-color;
+            }
+        }
+
+        &:focus {
+            box-shadow: none;
+        }
+
+    }
+
+
+
+    .modal-btn {
+        padding: 10px;
+        background: $primary-color;
+        color: $w;
+    }
+
+}
+
+.modal-backdrop {
+    z-index: -1 !important;
+}
+
+// ======================= HEADER END =======================
+
+
+
+// ====================================== HOME PAGE =========================================
+main {
+    // overflow-x: hidden;
+    min-height: $h;
+    background: url(../../public/img/banner-bg.png) center/cover;
+    background-attachment: fixed;
+    position: relative;
+
+    &::before {
+        content: url(../../public/img/banner-dotted.png);
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        animation: rotate 5s infinite ease;
+    }
+
+    &::after {
+        content: url(../../public/img/banner-line.png);
+        position: absolute;
+        top: 35%;
+        left: 50px;
+        animation: bounce 5s infinite linear;
+
+        @include res480 {
+            display: none;
+        }
+    }
+
+    .banner {
+        @include res480 {
+            padding: 25px 0px;
+        }
+
+        .row {
+            min-height: 80vh;
+
+            h1 {
+                color: $w;
+                line-height: 5.5rem;
+                font-size: 4rem;
+
+                @include res992 {
+                    font-size: 2rem;
+                    line-height: 4rem;
+                }
+
+                @include res480 {
+                    line-height: 2.8rem;
+                    font-size: 1.825rem;
+                }
+            }
+
+            .btn {
+                margin-top: 80px;
+
+                @include res992 {
+                    margin-top: 30px;
+                }
+
+                &:hover {
+                    color: $w;
+                }
+            }
+        }
+    }
+}
+
+// ------------------- demo -------------------
+.demo {
+    background: url(../../public/img/demo-bg.png) center/cover;
+
+    .demo-container {
+
+        .demo-content {
+
+            &>div {
+                text-align: center;
+                padding: 10px;
+                background: $w;
+                margin: 0px 10px;
+                box-shadow: 0px 0px 2px grey;
+                min-height: 150px;
+            }
+
+            div {
+                h2 {
+                    -webkit-text-stroke: 1px $primary-color;
+                    color: transparent;
+                    font-size: 2.5rem;
+                    padding-bottom: 10px;
+
+                    @include res480 {
+                        font: 1.5rem;
+                    }
+                }
+
+                h3 {
+                    color: $primary-color;
+                    font-size: 1.5rem;
+
+                    @include res480 {
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    .home-demo {
+        padding-top: 150px;
+
+        @include res480 {
+            padding-top: $pt-sm;
+        }
+
+        h1 {
+            text-align: center;
+            padding-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 900;
+
+            @include res480 {
+                font-size: 1.825rem;
+            }
+
+            &::after {
+                content: '';
+                height: 3px;
+                width: 15%;
+                background-color: $sec-color;
+                display: block;
+            }
+        }
+
+        p {
+            padding-top: $pt;
+            line-height: $lh;
+            padding-bottom: 30px;
+        }
+
+        .home-demo-img {
+            // box-shadow: 0px 0px 5px grey;
+            padding: 20px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background: $primary-color;
+
+            &:hover {
+                .img {
+                    transform: perspective(800px) translateZ(50px);
+                }
+            }
+
+            .demoPage {
+                display: none;
+                height: 100%;
+
+                @include res992 {
+                    display: block;
+                }
+            }
+
+            .img {
+                box-shadow: 0px 0px 3px $w;
+                transition: all .3s linear;
+                position: absolute;
+                height: 450px;
+
+                @include res992 {
+                    display: none;
+                }
+
+                &:nth-child(2) {
+                    transition-delay: .3s;
+                }
+
+                &:nth-child(3) {
+                    left: 220px;
+                    z-index: 1;
+                    transition-delay: .2s;
+                }
+
+                &:nth-child(4) {
+                    left: 440px;
+                    z-index: 2;
+                    transition-delay: .1s;
+
+                }
+
+                &:nth-child(5) {
+                    left: 660px;
+                    z-index: 3;
+
+                }
+            }
+        }
+    }
+
+    .inner-demo {
+        padding: 150px 0px;
+
+        @include res480 {
+            padding: $pt-sm 0px;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 900;
+
+            @include res480 {
+                font-size: 1.825rem;
+            }
+
+            &::after {
+                content: '';
+                height: 3px;
+                width: 15%;
+                background-color: $sec-color;
+                display: block;
+            }
+        }
+
+        p {
+            padding-top: $pt;
+            line-height: $lh;
+            padding-bottom: 30px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: $sec-color  !important;
+            padding: 30px;
+            box-shadow: 0px 0px 5px grey;
+            background: $w;
+            border-radius: 3px;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: $sec-color  !important;
+        }
+    }
+
+    .btn {
+        background: $sec-color;
+        color: $w;
+        margin-top: 30px;
+    }
+}
+
+// ------------------- feedbacks -------------------
+.feedbacks {
+    padding-top: 200px;
+
+    @include res772 {
+        padding-top: 30px;
+    }
+
+    h2 {
+        width: 80%;
+        margin: auto;
+        text-align: center;
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+        font-weight: 500;
+
+        @include res772 {
+            width: 100%;
+            font-size: $h2-fs-md;
+        }
+
+        @include res480{
+            line-height: 2.5rem;
+        }
+
+        span {
+            color: $sec-color;
+            font-weight: 700;
+        }
+
+    }
+
+    p {
+        padding-top: 30px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 4rem;
+        font-weight: 400;
+        padding-bottom: 80px;
+    }
+
+    .col-md-3 {
+        position: relative;
+
+        @include res480 {
+            padding-bottom: 25px;
+        }
+
+        h3 {
+            @include res480 {
+                font-size: 1.5rem;
+            }
+        }
+
+        p {
+            @include res480 {
+                padding-top: 8px;
+                font-size: 13px;
+            }
+        }
+
+        img {
+            position: absolute;
+            top: 30px;
+            left: 50px;
+            width: 200px;
+            height: 200px;
+
+            @include res480 {
+               height: 80%;
+               width: 80%;
+               left: 20px;
+               top: 0;
+            }
+        }
+    }
+
+    .svg {
+        min-width: 1em;
+        min-height: 1em;
+
+        @include res480 {
+            height: 120px;
+            widht: 100px;
+        }
+
+    }
+
+    .a {
+        fill: #DB4437;
+        transform: rotate(30deg);
+    }
+
+    .b {
+        fill: #F2A02D;
+        transform: rotate(-180deg);
+    }
+
+    .c {
+        fill: #4EB27C;
+        transform: rotate(70deg);
+    }
+
+    .d {
+        fill: #494EBB;
+        transform: rotate(200deg);
+    }
+
+    .e {
+        fill: #DB4437;
+        transform: rotate(80deg);
+    }
+
+    .f {
+        fill: #F2A02D;
+        transform: rotate(180deg);
+    }
+
+    .g {
+        fill: #494EBB;
+        transform: rotate(30deg);
+    }
+
+    .h {
+        fill: #DB4437;
+        transform: rotate(90deg);
+    }
+
+    .i {
+        fill: #4EB27C;
+        transform: rotate(250deg);
+    }
+
+    .j {
+        transform: rotate(30deg);
+    }
+}
+
+// ------------------- clients -------------------
+.clients {
+    padding-top: 50px;
+    padding-bottom: 20px;
+
+    h4 {
+        font-size: 5rem;
+        color: $sec-color;
+    }
+
+    h3{
+        @include res480{
+            font-size: $h2-fs-md;
+        }
+    }
+
+    p {
+        font-size: 14px;
+        padding-bottom: 10px;
+    }
+}
+
+// ====================================== HOME PAGE END ======================================
+
+
+
+
+// ====================================== FOOTER ======================================
+footer {
+    background: url(../../public/img/Footer-BG.png) center/cover;
+    padding: 50px 0px;
+
+    h3 {
+        color: $w;
+        padding-bottom: 20px;
+
+        @include res772 {
+            font-size: 1.3rem;
+        }
+    }
+
+    ul {
+        li {
+            padding: 5px 0px;
+
+            @include res772 {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .left {
+        h3 {
+            background: linear-gradient(to right, $w, rgba(0, 0, 0, 0.5));
+            width: fit-content;
+            background-clip: text;
+            color: transparent;
+        }
+    }
+
+    .mid_1 {
+        i {
+            padding-right: 8px;
+        }
+    }
+
+    .mid_2 {
+        a {
+            color: $w;
+        }
+    }
+
+    .right {
+
+        form {
+            @include res480 {
+                width: 80%;
+                margin: auto;
+            }
+        }
+
+        input:focus {
+            box-shadow: none !important;
+            border: none !important;
+        }
+
+        h2 {
+            color: $w;
+        }
+
+        ul {
+            li {
+                &:last-child {
+                    padding-top: 40px;
+                }
+            }
+        }
+
+        .fa-facebook,
+        .fa-rss {
+            background: $sec-color;
+            color: $w;
+            height: 20px;
+            width: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+        }
+    }
+
+    code {
+        color: #212529;
+    }
+}
+
+// ====================================== FOOTER END ======================================
+
+
+
+// ====================================== COPYRIGHT ======================================
+.copyright {
+    background: $brand-color;
+    padding: 20px 0px;
+
+    .copyright-links {
+
+        @include res480{
+            text-align: center;
+        }
+        span {
+            @include res480 {
+                display: block;
+                font-size: 14px;
+                padding-bottom: 10px;
+            }
+        }
+
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    ul {
+        display: flex;
+        padding-bottom: 5px;
+
+        li {
+            margin: 0px 10px;
+            height: 30px;
+            width: 30px;
+            border-radius: 3px;
+
+            a {
+                color: #212529;
+                border-radius: 3px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                position: relative;
+                transition: all .3s linear;
+                background: $w;
+                height: 100%;
+                width: 100%;
+            }
+
+            &:hover {
+                .fb {
+                    background: #4267B2;
+                }
+
+                .tt {
+                    background: #1DA1F2;
+                }
+
+                .pt {
+                    background: #E60023;
+                }
+
+                .gplus {
+                    background: #DB4437;
+                }
+
+                .lkd {
+                    background: #0A66C2;
+                }
+
+                .ig {
+                    background: rgba(193, 53, 132);
+                }
+
+                .gt {
+                    background: $b;
+                }
+
+                .icon1 {
+                    transform: translateY(0);
+                    color: $w;
+                }
+
+                .icon {
+                    transform: translateY(-50px);
+                }
+            }
+
+            i {
+                transition: all .3s linear;
+            }
+
+            .icon1 {
+                position: absolute;
+                top: 25%;
+                left: 30%;
+                transform: translateY(50px);
+            }
+
+        }
+    }
+
+    .copyright-icons {
+        i {
+            padding-right: 5px;
+        }
+    }
+}
+
+// ====================================== COPYRIGHT END ======================================
+
+
+
+// ====================================== ABOUT ======================================
+.about {
+    background: url(../../public/img/macbook.png) center/contain no-repeat;
+    height: 80vh;
+    padding-top: 20px;
+
+    .container {
+        height: 100%;
+
+        .play-btn {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            .btn {
+                border: none;
+                background: transparent;
+                position: relative;
+
+                &:focus {
+                    box-shadow: none;
+                }
+            }
+
+
+            i {
+                font-size: 4rem;
+                animation: play 5s linear infinite;
+
+                &:hover {
+                    color: tomato;
+                    cursor: pointer;
+                    animation-play-state: paused;
+                }
+            }
+        }
+        .modal-content {
+            background: transparent;
+            border: none;
+
+            .btn-close {
+                background-image: none;
+                color: $w;
+                font-size: 2rem;
+                transform: translateY(10px);
+
+                &:hover {
+                    color: tomato;
+                }
+            }
+        }
+    }
+
+}
+
+// ====================================== ABOUT END ======================================
+
+
+
+// ====================================== CONTACT ======================================
+.contact {
+    height: $h;
+    padding-bottom: 30px;
+    padding-top: 20px;
+
+    .container {
+        height: 100%;
+
+        iframe {
+            height: 100%;
+        }
+    }
+
+}
+
+// ====================================== CONTACT END ======================================
+
+
+
+// ====================================== FEATURES ======================================
+.features {
+    padding: 20px 0px;
+    min-height: $h;
+
+    .nav {
+        justify-content: center;
+        //    margin: auto;
+    }
+
+    button {
+        font-size: 14px;
+        color: $w;
+        font-weight: 600;
+    }
+
+    .nav-link {
+        background: $sec-color;
+        padding: 1.25rem 1rem;
+        border-radius: 0;
+        text-align: center;
+
+        &:hover {
+            color: $primary-color;
+        }
+
+        @include res992 {
+            margin: 5px;
+            justify-content: center;
+        }
+
+        @include res480{
+            padding: .5em;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
+        background: $primary-color  !important;
+    }
+
+    .col-4 {
+
+        @include res772 {
+            padding: 0px !important;
+        }
+
+        .img {
+            box-shadow: 0px 0px 3px grey;
+            position: relative;
+            margin: 10px;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: rgba(0, 0, 0, 0.5);
+                height: 100%;
+                width: 100%;
+                transform: scale(.5);
+                opacity: 0;
+                transition: all .3s linear;
+            }
+
+            &:hover {
+                &::before {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+
+                .social-icons {
+                    opacity: 1;
+                }
+            }
+
+            .social-icons {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform-origin: top;
+                transform: translate(-50%, -50%);
+                opacity: 0;
+                text-align: center;
+                transition: all .3s .3s linear;
+
+                .btn {
+                    transition: all .3s ease;
+                    overflow: hidden;
+
+                    &:hover {
+                        color: $w;
+                    }
+                }
+
+                .fa-shopping-cart,
+                .fa-heart {
+                    font-size: 1.5rem;
+                    padding: 10px;
+                    color: $w;
+                    transition: all .2s;
+
+                    &:hover {
+                        color: tomato;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+    }
+
+
+}
+
+.featuresList {
+    padding-top: 200px;
+    padding-bottom: 20px;
+
+    h2 {
+        text-align: center;
+        padding: 30px 0px;
+        background: $sec-color;
+        color: $w;
+        margin-bottom: 50px;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-top: 10px;
+
+        .featureList-icons {
+            width: 160px;
+            min-height: 150px;
+            box-shadow: 0px 0px 3px grey;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3px;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            margin: auto;
+        }
+
+        h5 {
+            text-align: center;
+            font-size: 1.125rem;
+            padding-top: 10px;
+
+        }
+    }
+
+}
+
+// ====================================== FEATURES END ======================================
+
+
+// ====================================== BLOG ======================================
+.blog {
+    .col-6 {
+        margin: 10px 0px;
+
+        img{
+
+            @include res480{
+                width: 80% ;
+                margin: auto;
+            }
+        }
+
+        h3{
+            @include res480{
+                font-size: 1.25rem;
+            }
+        }
+    }
+}
+
+// ====================================== BLOG END ======================================
+
+
+
+// ====================================== ERROR PAGE ======================================
+.error {
+    h1 {
+        height: 60vh;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+// ====================================== ERROR PAGE END ======================================
+
+
+
+// ====================================== PORTFOLIO ======================================
+.portfolio {
+    min-height: $h;
+
+    h1 {
+        font-size: 4rem;
+        color: $primary-color;
+
+        @include res772 {
+            font-size: 3rem;
+        }
+    }
+
+    p {
+        padding-top: 50px;
+        padding-bottom: 20px;
+
+        @include res772 {
+            font-size: 14px;
+            padding-top: 40px;
+        }
+    }
+
+    a {
+        border: 1px solid $b;
+        transition: all .3s;
+
+        @include res772 {
+            font-size: 14px;
+            padding: 8px;
+        }
+
+        &:hover {
+            background: $sec-color;
+            color: $w;
+        }
+    }
+
+
+}
+
+// --------------- portfolio ingo ---------------
+.portfolio-info {
+    background: $primary-color;
+    color: $w;
+    padding: 20px 0px;
+
+    .text-btn {
+        background: $sec-color;
+        padding: 10px;
+        color: $w;
+        margin: 10px 0px;
+    }
+
+    .form {
+        margin-left: auto;
+
+        @include res772 {
+            margin: auto;
+        }
+    }
+
+    p {
+        font-size: 14px;
+        padding-top: $pt;
+    }
+}
+
+// ====================================== PORTFOLIO END ======================================
+
+.userData {
+
+    .container {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap-reverse;
+
+        .card {
+            width: 300px;
+
+            @include res480 {
+                margin-top: 30px;
+            }
+
+        }
+
+        .back-btn {
+            margin: 30px;
+
+        }
+    }
+
+}

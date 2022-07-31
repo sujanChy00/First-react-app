@@ -1,0 +1,193 @@
+$brand-color: #0F0F0F;
+$primary-color: #262626;
+$sec-color: #82B541;
+$w: #fff;
+$b: #000;
+
+
+.list {
+    position: relative;
+
+    &:hover {
+        .list-items {
+            top: 50px;
+            visibility: visible;
+        }
+    }
+
+    .list-items {
+        display: flex;
+        // gap: 30px;
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        justify-content: space-between;
+        transform: translateX(-50%);
+        background: $w;
+        border-top: 5px solid $sec-color;
+        width: 80vw;
+        padding: 15px;
+        z-index: 9999;
+        visibility: hidden;
+        transition: all .2s linear;
+        box-shadow: 0px 0px 3px grey;
+        border-right: none;
+
+        ul {
+            display: block;
+            padding: 0px 30px;
+
+            li {
+                padding: 15px 0px;
+            }
+
+            a {
+                transition: all .2s;
+
+                &:hover {
+                    text-decoration: none;
+                    transform: translateX(10px);
+                }
+            }
+
+            i {
+                display: inline;
+                padding-right: 10px;
+            }
+        }
+
+    }
+}
+
+#toggler {
+    display: none;
+    font-size: 1.5rem;
+    padding-left: 15px;
+
+    @include res992 {
+        display: block;
+        margin-left: auto;
+    }
+}
+
+.modeTgl{
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: relative;
+
+    .fa-moon-o{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+    }
+}
+
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    top: 0;
+    min-height: 100vh;
+    background: $brand-color;
+    z-index: 999999999999;
+    min-width: 250px;
+    padding: 0px 20px;
+    transition: all .3s linear;
+
+    .menu-header {
+        padding: 20px 0px;
+
+        .user {
+            font-size: 2rem;
+            color: $sec-color;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            color: $w;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    }
+
+
+
+    .menu-body {
+        padding: 30px 0px 0px 0px;
+
+        li {
+            padding-bottom: 15px;
+        }
+
+
+        i {
+            padding-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        a {
+            color: transparent;
+            position: relative;
+            background: linear-gradient(to right, rgba(3, 30, 87, 1) 0%, rgba(44, 73, 209, 1) 50%, rgba(227, 75, 162, 1) 100%);
+            background-clip: text;
+            padding-left: 10px;
+            font-weight: 600;
+            transition: all .3s linear;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 5px;
+                height: 0;
+                background: linear-gradient(to bottom, rgba(3, 30, 87, 1) 0%, rgba(44, 73, 209, 1) 50%, rgba(227, 75, 162, 1) 100%);
+                transition: all .3s linear;
+            }
+
+            &:hover {
+                padding-left: 20px;
+
+                &::before {
+                    height: 100%;
+                }
+            }
+
+        }
+    }
+
+
+    .menu-footer {
+        margin-top: auto;
+        padding-bottom: 10px;
+
+        a {
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $w;
+            border-radius: 5px;
+            color: $brand-color;
+
+            &:first-child {
+                color: darkblue;
+            }
+
+            &:last-child {
+                color: darkred;
+            }
+
+        }
+    }
+
+}
