@@ -371,8 +371,6 @@ header {
 
     }
 
-
-
     .modal-btn {
         padding: 10px;
         background: $primary-color;
@@ -384,7 +382,6 @@ header {
 .modal-backdrop {
     z-index: -1 !important;
 }
-
 // ======================= HEADER END =======================
 
 
@@ -1322,6 +1319,10 @@ footer {
 // ====================================== PORTFOLIO ======================================
 .portfolio {
     min-height: $h;
+
+    @include res480{
+        text-align: center;
+    }
 
     h1 {
         font-size: 4rem;

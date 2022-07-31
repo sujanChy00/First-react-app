@@ -6,7 +6,7 @@ export default function Copyright() {
             <section className="copyright">
                 <div className="container">
                     <div className="row align-items-center">
-                        <div className="col-md-5 text-md-start text-center order-md-0 order-1">
+                        <div className="col-md-5 text-md-left text-center order-md-0 order-1">
                             <p>Copyrights © 2020 All Rights Reserved by Sujan Chy. Terms of Use / Privacy Policy</p>
                         </div>
                         <div className="col-md-7 ">
