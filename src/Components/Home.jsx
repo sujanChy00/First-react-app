@@ -7,6 +7,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import Footer from './Footer';
 import { NavLink } from 'react-router-dom';
+import {MeroLogo} from '../../public/img/shop/'
 
 
 export default function Home() {
