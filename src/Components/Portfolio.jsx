@@ -11,7 +11,7 @@ export default function Portfolio() {
 
   return (
     <>
-      
+
       {/* ========================= TOP BUTTON ========================= */}
       <a href="#top" className="top">
         <i className="fa fa-angle-up"></i>
@@ -30,7 +30,7 @@ export default function Portfolio() {
                 <h1>Hey, I'm Sujan Chaudhary</h1>
                 <small className='text-muted'>Front-End Developer (loading.......)</small>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas aperiam in nobis corporis! Temporibus veniam, fuga quae voluptate ab unde!</p>
-                <a href="https://github.com/sujanChy00?tab=repositories" target='_blank' className="btn">Know More</a>
+                <a href="https://github.com/sujanChy00" target='_blank' className="btn">Know More</a>
               </div>
             </div>
             <div className="col-md-5 col-8 mx-md-0 mx-auto">
@@ -40,7 +40,7 @@ export default function Portfolio() {
         </div>
       </section>
 
-      
+
       {/* ========================= PORTFOLIO INFO ========================= */}
       <section className="portfolio-info">
         <div className="container">

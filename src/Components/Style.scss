@@ -335,7 +335,7 @@ header {
                     padding: 0px 10px;
                 }
 
-                @include res480{
+                @include res480 {
                     padding: 0px 5px;
                 }
             }
@@ -382,6 +382,7 @@ header {
 .modal-backdrop {
     z-index: -1 !important;
 }
+
 // ======================= HEADER END =======================
 
 
@@ -677,7 +678,7 @@ main {
             font-size: $h2-fs-md;
         }
 
-        @include res480{
+        @include res480 {
             line-height: 2.5rem;
         }
 
@@ -727,10 +728,10 @@ main {
             height: 200px;
 
             @include res480 {
-               height: 80%;
-               width: 80%;
-               left: 20px;
-               top: 0;
+                height: 80%;
+                width: 80%;
+                left: 20px;
+                top: 0;
             }
         }
     }
@@ -806,8 +807,8 @@ main {
         color: $sec-color;
     }
 
-    h3{
-        @include res480{
+    h3 {
+        @include res480 {
             font-size: $h2-fs-md;
         }
     }
@@ -923,9 +924,10 @@ footer {
 
     .copyright-links {
 
-        @include res480{
+        @include res480 {
             text-align: center;
         }
+
         span {
             @include res480 {
                 display: block;
@@ -1066,6 +1068,7 @@ footer {
                 }
             }
         }
+
         .modal-content {
             background: transparent;
             border: none;
@@ -1140,7 +1143,7 @@ footer {
             justify-content: center;
         }
 
-        @include res480{
+        @include res480 {
             padding: .5em;
             font-size: 14px;
             font-weight: 400;
@@ -1281,16 +1284,16 @@ footer {
     .col-6 {
         margin: 10px 0px;
 
-        img{
+        img {
 
-            @include res480{
-                width: 80% ;
+            @include res480 {
+                width: 80%;
                 margin: auto;
             }
         }
 
-        h3{
-            @include res480{
+        h3 {
+            @include res480 {
                 font-size: 1.25rem;
             }
         }
@@ -1320,7 +1323,7 @@ footer {
 .portfolio {
     min-height: $h;
 
-    @include res480{
+    @include res480 {
         text-align: center;
     }
 
