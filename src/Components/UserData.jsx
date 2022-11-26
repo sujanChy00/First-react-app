@@ -14,7 +14,7 @@ export default function UserData() {
             })
     }, [])
 
-    let dataFetched = data.find((j) => j.id == info)
+    let dataFetched = data.find((j) => j.id === parseInt(info))
 
     return (
 
@@ -32,7 +32,7 @@ export default function UserData() {
                                 <p className='card-text'>Zipcode: {dataFetched?.address.zipcode}</p>
                             </div>
                             <div className="card-footer">
-                                <a className='btn btn-info' href="">{dataFetched?.website}</a>
+                                <a className='btn btn-info' href="#">{dataFetched?.website}</a>
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Home from "./Components/Home";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
@@ -10,6 +10,19 @@ import Portfolio from "./Components/Portfolio";
 import UserData from "./Components/UserData";
 
 function App() {
+  useEffect(() => {
+
+    var Tawk_API = '53700c59bd15cdfbcfd7095cbd38405627d41777' || {}, Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/6381987edaff0e1306d97eed/1gip3ncm2';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+
+  }, [])
   return (
     <>
       <BrowserRouter>
